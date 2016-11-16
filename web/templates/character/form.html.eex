@@ -9,6 +9,30 @@
     <%= label f, :name, class: "control-label" %>
     <%= text_input f, :name, class: "form-control" %>
     <%= error_tag f, :name %>
+
+    <%= label f, :strength, class: "control-label" %>
+    <%= number_input f, :strength, class: "form-control" %>
+    <%= error_tag f, :strength %>
+
+    <%= label f, :dexterity, class: "control-label" %>
+    <%= number_input f, :dexterity, class: "form-control" %>
+    <%= error_tag f, :dexterity%>
+
+    <%= label f, :constitution, class: "control-label" %>
+    <%= number_input f, :constitution, class: "form-control" %>
+    <%= error_tag f, :constitution%>
+
+    <%= label f, :intelligence, class: "control-label" %>
+    <%= number_input f, :intelligence, class: "form-control" %>
+    <%= error_tag f, :intelligence%>
+
+    <%= label f, :wisdom, class: "control-label" %>
+    <%= number_input f, :wisdom, class: "form-control" %>
+    <%= error_tag f, :wisdom%>
+
+    <%= label f, :charisma, class: "control-label" %>
+    <%= number_input f, :charisma, class: "form-control" %>
+    <%= error_tag f, :charisma%>
   </div>
 
   <div class="form-group">

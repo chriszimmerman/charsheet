@@ -3,6 +3,12 @@ defmodule Charsheet.Character do
 
   schema "characters" do
     field :name, :string
+    field :strength, :integer
+    field :dexterity, :integer
+    field :constitution, :integer
+    field :intelligence, :integer
+    field :wisdom, :integer
+    field :charisma, :integer
 
     timestamps()
   end
@@ -12,7 +18,7 @@ defmodule Charsheet.Character do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name])
-    |> validate_required([:name])
+    |> cast(params, [:name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma])
+    |> validate_required([:name, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma])
   end
 end
