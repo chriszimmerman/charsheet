@@ -1,17 +1,16 @@
-<h2>Listing characters</h2>
+<h2>Characters</h2>
 
 <table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-
-      <th></th>
-    </tr>
-  </thead>
   <tbody>
 <%= for character <- @characters do %>
     <tr>
       <td><%= character.name %></td>
+      <td>Str: <%= character.strength %></td>
+      <td>Dex: <%= character.dexterity %></td>
+      <td>Con: <%= character.constitution %></td>
+      <td>Int: <%= character.intelligence %></td>
+      <td>Wis: <%= character.wisdom %></td>
+      <td>Cha: <%= character.charisma %></td>
 
       <td class="text-right">
         <%= link "Show", to: character_path(@conn, :show, character), class: "btn btn-default btn-xs" %>

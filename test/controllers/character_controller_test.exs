@@ -7,7 +7,7 @@ defmodule Charsheet.CharacterControllerTest do
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, character_path(conn, :index)
-    assert html_response(conn, 200) =~ "Listing characters"
+    assert html_response(conn, 200) =~ "Characters"
   end
 
   test "renders form for new resources", %{conn: conn} do
