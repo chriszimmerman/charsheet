@@ -59,7 +59,7 @@ defmodule Charsheet.CharacterController do
     Repo.delete!(character)
 
     conn
-    |> put_flash(:info, "Character deleted successfully.")
+    |> put_flash(:info, "#{character.name} deleted successfully.")
     |> redirect(to: character_path(conn, :index))
   end
 end
