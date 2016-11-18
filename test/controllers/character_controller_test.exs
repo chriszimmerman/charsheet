@@ -2,8 +2,8 @@ defmodule Charsheet.CharacterControllerTest do
   use Charsheet.ConnCase
 
   alias Charsheet.Character
-  @valid_attrs %{name: "some content", strength: 10, dexterity: 11, constitution: 12, intelligence: 13, wisdom: 14, charisma: 15}
-  @invalid_attrs %{}
+  @valid_attrs %{name: "some content", hit_points: 9, level: 1, experience_points: 0, strength: 10, dexterity: 11, constitution: 12, intelligence: 13, wisdom: 14, charisma: 15}
+  @invalid_attrs %{hit_points: 0, strength: -1, dexterity: -1, constitution: -2, intelligence: -3, wisdom: -4, charisma: -5}
 
   test "lists all entries on index", %{conn: conn} do
     conn = get conn, character_path(conn, :index)

@@ -9,7 +9,7 @@ defmodule Charsheet.CharacterController do
   end
 
   def new(conn, _params) do
-    changeset = Character.changeset(%Character{strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10})
+    changeset = Character.changeset(%Character{hit_points: 1, level: 1, experience_points: 0, strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10})
     render(conn, "new.html", changeset: changeset)
   end
 

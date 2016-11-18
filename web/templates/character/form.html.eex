@@ -10,6 +10,34 @@
     <%= text_input f, :name, class: "form-control" %>
     <%= error_tag f, :name %>
 
+    <%= label f, :class, class: "control-label" %>
+    <%= text_input f, :class, class: "form-control" %>
+    <%= error_tag f, :class %>
+
+    <%= label f, :level, class: "control-label" %>
+    <%= number_input f, :level, class: "form-control" %>
+    <%= error_tag f, :level %>
+
+    <%= label f, :race, class: "control-label" %>
+    <%= text_input f, :race, class: "form-control" %>
+    <%= error_tag f, :race %>
+
+    <%= label f, :background, class: "control-label" %>
+    <%= text_input f, :background, class: "form-control" %>
+    <%= error_tag f, :background %>
+
+    <%= label f, :alignment, class: "control-label" %>
+    <%= text_input f, :alignment, class: "form-control" %>
+    <%= error_tag f, :alignment %>
+
+    <%= label f, :experience_points, class: "control-label" %>
+    <%= number_input f, :experience_points, class: "form-control" %>
+    <%= error_tag f, :experience_points %>
+
+    <%= label f, :hit_points, class: "control-label" %>
+    <%= number_input f, :hit_points, class: "form-control" %>
+    <%= error_tag f, :hit_points %>
+
     <%= label f, :strength, class: "control-label" %>
     <%= number_input f, :strength, class: "form-control" %>
     <%= error_tag f, :strength %>
