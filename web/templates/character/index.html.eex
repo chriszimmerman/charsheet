@@ -5,12 +5,7 @@
 <%= for character <- @characters do %>
     <tr>
       <td><%= character.name %></td>
-      <td>Str: <%= character.strength %></td>
-      <td>Dex: <%= character.dexterity %></td>
-      <td>Con: <%= character.constitution %></td>
-      <td>Int: <%= character.intelligence %></td>
-      <td>Wis: <%= character.wisdom %></td>
-      <td>Cha: <%= character.charisma %></td>
+      <td>Level <%= character.level %> <%= character.class %></td>
 
       <td class="text-right">
         <%= link "Show", to: character_path(@conn, :show, character), class: "btn btn-default btn-xs" %>

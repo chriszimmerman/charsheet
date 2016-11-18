@@ -24,7 +24,7 @@ defmodule Charsheet.Character do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :hit_points, :level, :experience_points, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma])
+    |> cast(params, [:name, :class, :race, :background, :alignment, :hit_points, :level, :experience_points, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma])
     |> validate_required([:name, :hit_points, :level, :experience_points, :strength, :dexterity, :constitution, :intelligence, :wisdom, :charisma])
     |> validate_inclusion(:strength, 1..20)
     |> validate_inclusion(:dexterity, 1..20)
@@ -34,6 +34,6 @@ defmodule Charsheet.Character do
     |> validate_inclusion(:charisma, 1..20)
     |> validate_number(:hit_points, greater_than: 0)
     |> validate_number(:level, greater_than: 0)
-    |> validate_number(:level, greater_than_or_equal_to: 0)
+    |> validate_number(:experience_points, greater_than_or_equal_to: 0)
   end
 end
