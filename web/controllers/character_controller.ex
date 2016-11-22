@@ -2,6 +2,7 @@ defmodule Charsheet.CharacterController do
   use Charsheet.Web, :controller
 
   alias Charsheet.Character
+  alias Charsheet.CoreStats
 
   def index(conn, _params) do
     characters = Repo.all(Character)
@@ -9,12 +10,16 @@ defmodule Charsheet.CharacterController do
   end
 
   def new(conn, _params) do
-    changeset = Character.changeset(%Character{hit_points: 1, level: 1, experience_points: 0, strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10})
+  	stats_changeset = CoreStats.changeset(%CoreStats{strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10})
+  	
+  	changeset = Character.changeset(%Character{hit_points: 1, level: 1, experience_points: 0, core_stats: stats_changeset})
     render(conn, "new.html", changeset: changeset)
   end
 
   def create(conn, %{"character" => character_params}) do
+  	stats = CoreStats.changeset(%CoreStats{}, character_params["core_stats"])
     changeset = Character.changeset(%Character{}, character_params)
+    |> Ecto.Changeset.put_embed(:core_stats, stats.changes)
 
     case Repo.insert(changeset) do
       {:ok, _character} ->
@@ -39,7 +44,9 @@ defmodule Charsheet.CharacterController do
 
   def update(conn, %{"id" => id, "character" => character_params}) do
     character = Repo.get!(Character, id)
+    stats = CoreStats.changeset(%CoreStats{}, character_params["core_stats"])
     changeset = Character.changeset(character, character_params)
+    |> Ecto.Changeset.put_embed(:core_stats, stats.changes)
 
     case Repo.update(changeset) do
       {:ok, character} ->

@@ -38,29 +38,32 @@
     <%= number_input f, :hit_points, class: "form-control" %>
     <%= error_tag f, :hit_points %>
 
-    <%= label f, :strength, class: "control-label" %>
-    <%= number_input f, :strength, class: "form-control" %>
-    <%= error_tag f, :strength %>
+		<%= inputs_for f, :core_stats, fn s -> %>
+			<%= label s, :strength, class: "control-label" %>
+			<%= number_input s, :strength, class: "form-control" %>
+			<%= error_tag s, :strength %>
 
-    <%= label f, :dexterity, class: "control-label" %>
-    <%= number_input f, :dexterity, class: "form-control" %>
-    <%= error_tag f, :dexterity %>
+			<%= label s, :dexterity, class: "control-label" %>
+			<%= number_input s, :dexterity, class: "form-control" %>
+			<%= error_tag s, :dexterity %>
 
-    <%= label f, :constitution, class: "control-label" %>
-    <%= number_input f, :constitution, class: "form-control" %>
-    <%= error_tag f, :constitution %>
+			<%= label s, :constitution, class: "control-label" %>
+			<%= number_input s, :constitution, class: "form-control" %>
+			<%= error_tag s, :constitution %>
 
-    <%= label f, :intelligence, class: "control-label" %>
-    <%= number_input f, :intelligence, class: "form-control" %>
-    <%= error_tag f, :intelligence %>
+			<%= label s, :intelligence, class: "control-label" %>
+			<%= number_input s, :intelligence, class: "form-control" %>
+			<%= error_tag s, :intelligence %>
 
-    <%= label f, :wisdom, class: "control-label" %>
-    <%= number_input f, :wisdom, class: "form-control" %>
-    <%= error_tag f, :wisdom %>
+			<%= label s, :wisdom, class: "control-label" %>
+			<%= number_input s, :wisdom, class: "form-control" %>
+			<%= error_tag s, :wisdom %>
 
-    <%= label f, :charisma, class: "control-label" %>
-    <%= number_input f, :charisma, class: "form-control" %>
-    <%= error_tag f, :charisma %>
+			<%= label s, :charisma, class: "control-label" %>
+			<%= number_input s, :charisma, class: "form-control" %>
+			<%= error_tag s, :charisma %>
+		<% end %>  
+
   </div>
 
   <div class="form-group">
