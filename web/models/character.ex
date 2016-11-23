@@ -4,14 +4,15 @@ defmodule Charsheet.Character do
 
   schema "characters" do
     field :name, :string
-		field :class, :string
-		field :level, :integer
-		field :race, :string
-		field :background, :string
-		field :alignment, :string
-		field :experience_points, :integer
-		field :hit_points, :integer
-		embeds_one(:core_stats, Charsheet.CoreStats, on_replace: :delete)
+	field :class, :string
+	field :level, :integer
+	field :race, :string
+	field :background, :string
+	field :alignment, :string
+	field :experience_points, :integer
+	field :hit_points, :integer
+	embeds_one(:core_stats, Charsheet.CoreStats, on_replace: :delete)
+
     timestamps()
   end
 
