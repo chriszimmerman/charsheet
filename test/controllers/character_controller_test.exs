@@ -39,9 +39,9 @@ defmodule Charsheet.CharacterControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
-    character = Repo.insert! %Character{}
+    character = Repo.insert! Map.merge(%Character{}, get_valid_character())
     conn = get conn, character_path(conn, :show, character)
-    assert html_response(conn, 200) =~ "Show character"
+    assert html_response(conn, 200) =~ "some content"
   end
 
   test "renders page not found when id is nonexistent", %{conn: conn} do

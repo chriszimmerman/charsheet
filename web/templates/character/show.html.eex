@@ -1,12 +1,18 @@
-<h2>Show character</h2>
+<h1><%= @character.name %></h1>
+<h2>Level <%= @character.level %> <%= @character.race %> <%= @character.class %></h2>
 
 <ul>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @character.name %>
-  </li>
-
+  <li>Alignment: <%= @character.alignment %></li>
+  <li>Background: <%= @character.background %></li>
+</ul>
+<ul>
+  <li>Hit Points: <%= @character.hit_points %></li>
+  <li>Strength : <%= @character.core_stats.strength %></li>
+  <li>Dexterity : <%= @character.core_stats.dexterity %></li>
+  <li>Constitution: <%= @character.core_stats.constitution %></li>
+  <li>Intelligence: <%= @character.core_stats.intelligence %></li>
+  <li>Wisdom: <%= @character.core_stats.wisdom %></li>
+  <li>Charisma: <%= @character.core_stats.charisma %></li>
 </ul>
 
 <%= link "Edit", to: character_path(@conn, :edit, @character) %>
