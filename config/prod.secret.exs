@@ -15,6 +15,6 @@ config :charsheet, Charsheet.Endpoint,
 config :charsheet, Charsheet.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: System.get_env("DATABASE_USERNAME"),
-  password: ,System.get_env("DATABASE_PASSWORD")
-  database: "charsheet_prod",
+  password: System.get_env("DATABASE_PASSWORD"),
+  database: System.get_env("DATABASE_NAME"),
   pool_size: 20
