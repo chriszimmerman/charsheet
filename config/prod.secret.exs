@@ -17,4 +17,5 @@ config :charsheet, Charsheet.Repo,
   username: System.get_env("DATABASE_USERNAME"),
   password: System.get_env("DATABASE_PASSWORD"),
   database: System.get_env("DATABASE_NAME"),
+  url: System.get_env("DATABASE_URL"),
   pool_size: 20
