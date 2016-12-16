@@ -15,4 +15,4 @@ config :charsheet, Charsheet.Endpoint,
 config :charsheet, Charsheet.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
-  pool_size: -1
+  pool_size: 20
