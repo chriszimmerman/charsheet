@@ -3,7 +3,7 @@ defmodule Charsheet.Character do
   alias Charsheet.CoreStats
 
   schema "characters" do
-    field :name, :string
+  field :name, :string
 	field :class, :string
 	field :level, :integer
 	field :race, :string

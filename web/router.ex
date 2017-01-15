@@ -16,7 +16,7 @@ defmodule Charsheet.Router do
   scope "/", Charsheet do
     pipe_through :browser # Use the default browser stack
 
-    get "/", CharacterController, :index
+    get "/", PageController, :index
     resources "/characters", CharacterController
   end
 
