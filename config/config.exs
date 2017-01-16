@@ -5,6 +5,10 @@
 # is restricted to this project.
 use Mix.Config
 
+config :passport,
+  resource: Charsheet.User,
+  repo: Charsheet.Repo
+
 # General application configuration
 config :charsheet,
   ecto_repos: [Charsheet.Repo]
