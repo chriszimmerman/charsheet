@@ -14,25 +14,29 @@ defmodule Charsheet.CharacterController do
   end
 
   def new(conn, _params) do
-    default_stats = %CoreStats{
-      strength: 10,
-      dexterity: 10,
-      constitution: 10,
-      intelligence: 10,
-      wisdom: 10,
-      charisma: 10
-    }
-  	stats_changeset = CoreStats.changeset(default_stats)
+    if !conn.assigns.current_user do
+      redirect(conn, to: session_path(conn, :new))
+    else
+      default_stats = %CoreStats{
+        strength: 10,
+        dexterity: 10,
+        constitution: 10,
+        intelligence: 10,
+        wisdom: 10,
+        charisma: 10
+      }
+      stats_changeset = CoreStats.changeset(default_stats)
 
-  	default_character = %Character{
-      hit_points: 1,
-      level: 1,
-      experience_points: 0,
-      core_stats: stats_changeset
-    }
-  	character_changeset = Character.changeset(default_character)
+      default_character = %Character{
+        hit_points: 1,
+        level: 1,
+        experience_points: 0,
+        core_stats: stats_changeset
+      }
+      character_changeset = Character.changeset(default_character)
 
-    render(conn, "new.html", changeset: character_changeset)
+      render(conn, "new.html", changeset: character_changeset)
+    end
   end
 
   def create(conn, %{"character" => character_params}) do
@@ -58,9 +62,13 @@ defmodule Charsheet.CharacterController do
   end
 
   def edit(conn, %{"id" => id}) do
-    character = Repo.get!(Character, id)
-    changeset = Character.changeset(character)
-    render(conn, "edit.html", character: character, changeset: changeset)
+    if !conn.assigns.current_user do
+      redirect(conn, to: session_path(conn, :new))
+    else
+      character = Repo.get!(Character, id)
+      changeset = Character.changeset(character)
+      render(conn, "edit.html", character: character, changeset: changeset)
+    end
   end
 
   def update(conn, %{"id" => id, "character" => character_params}) do
@@ -80,14 +88,18 @@ defmodule Charsheet.CharacterController do
   end
 
   def delete(conn, %{"id" => id}) do
-    character = Repo.get!(Character, id)
+    if !conn.assigns.current_user do
+      redirect(conn, to: session_path(conn, :new))
+    else
+      character = Repo.get!(Character, id)
 
-    # Here we use delete! (with a bang) because we expect
-    # it to always work (and if it does not, it will raise).
-    Repo.delete!(character)
+      # Here we use delete! (with a bang) because we expect
+      # it to always work (and if it does not, it will raise).
+      Repo.delete!(character)
 
-    conn
-    |> put_flash(:info, "#{character.name} deleted successfully.")
-    |> redirect(to: character_path(conn, :index))
+      conn
+      |> put_flash(:info, "#{character.name} deleted successfully.")
+      |> redirect(to: character_path(conn, :index))
+    end
   end
 end
