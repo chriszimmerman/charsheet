@@ -18,7 +18,7 @@ defmodule Charsheet.CharacterController do
 
   def create(conn, %{"character" => character_params}) do
   	stats = CoreStats.changeset(%CoreStats{}, character_params["core_stats"])
-    changeset = Character.changeset(%Character{}, character_params)
+    changeset = Character.changeset(%Character{user_id: conn.assigns.current_user.id}, character_params)
     |> Ecto.Changeset.put_embed(:core_stats, stats.changes)
 
     case Repo.insert(changeset) do

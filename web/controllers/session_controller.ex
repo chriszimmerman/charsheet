@@ -15,7 +15,7 @@ defmodule Charsheet.SessionController do
     {:ok, conn} ->
       conn
       |> put_flash(:info, "Welcome back!")
-      |> redirect(to: page_path(conn, :index))
+      |> redirect(to: character_path(conn, :index))
     {:error, _reason, conn} ->
       conn
       |> put_flash(:error, "Invalid username/password combination")
@@ -27,6 +27,6 @@ defmodule Charsheet.SessionController do
     conn
     |> Session.logout()
     |> put_flash(:info, "You have been logged out")
-    |> redirect(to: session_path(conn, :new))
+    |> redirect(to: page_path(conn, :index))
   end
 end

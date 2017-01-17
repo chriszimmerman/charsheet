@@ -1,20 +1,23 @@
+<%= if @current_user do %>
 <h2>Characters</h2>
+  <table class="table">
+    <tbody>
+      <%= for character <- Enum.filter(@characters, fn x -> x.user_id == @current_user.id end) do %>
+        <tr>
+          <td><%= character.name %></td>
+          <td>Level <%= character.level %> <%= character.class %></td>
 
-<table class="table">
-  <tbody>
-<%= for character <- @characters do %>
-    <tr>
-      <td><%= character.name %></td>
-      <td>Level <%= character.level %> <%= character.class %></td>
+          <td class="text-right">
+            <%= link "Show", to: character_path(@conn, :show, character), class: "btn btn-default btn-xs" %>
+            <%= link "Edit", to: character_path(@conn, :edit, character), class: "btn btn-default btn-xs" %>
+            <%= link "Delete", to: character_path(@conn, :delete, character), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+          </td>
+        </tr>
+  <% end %>
+    </tbody>
+  </table>
 
-      <td class="text-right">
-        <%= link "Show", to: character_path(@conn, :show, character), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: character_path(@conn, :edit, character), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: character_path(@conn, :delete, character), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
+  <%= link "New character", to: character_path(@conn, :new) %>
+<%= else %>
+  Please login.
 <% end %>
-  </tbody>
-</table>
-
-<%= link "New character", to: character_path(@conn, :new) %>
