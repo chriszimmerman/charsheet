@@ -5,8 +5,12 @@ defmodule Charsheet.CharacterController do
   alias Charsheet.CoreStats
 
   def index(conn, _params) do
-    characters = Repo.all(Character)
-    render(conn, "index.html", characters: characters)
+    if !conn.assigns.current_user do
+      redirect(conn, to: session_path(conn, :new))
+    else
+      characters = Repo.all(Character)
+      render(conn, "index.html", characters: characters)
+    end
   end
 
   def new(conn, _params) do
