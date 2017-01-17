@@ -24,7 +24,7 @@
               <li role="presentation"><a href="<%= registration_path @conn, :new %>">Register</a></li>
               <%= end %>
             </ul>
-            <a class="navbar-brand">Charsheet</a>
+            <a class="navbar-brand" href="<%= page_path @conn, :index %>">Charsheet</a>
           </div>
         </nav>
       </div>
