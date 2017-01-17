@@ -14,10 +14,25 @@ defmodule Charsheet.CharacterController do
   end
 
   def new(conn, _params) do
-  	stats_changeset = CoreStats.changeset(%CoreStats{strength: 10, dexterity: 10, constitution: 10, intelligence: 10, wisdom: 10, charisma: 10})
-  	
-  	changeset = Character.changeset(%Character{hit_points: 1, level: 1, experience_points: 0, core_stats: stats_changeset})
-    render(conn, "new.html", changeset: changeset)
+    default_stats = %CoreStats{
+      strength: 10,
+      dexterity: 10,
+      constitution: 10,
+      intelligence: 10,
+      wisdom: 10,
+      charisma: 10
+    }
+  	stats_changeset = CoreStats.changeset(default_stats)
+
+  	default_character = %Character{
+      hit_points: 1,
+      level: 1,
+      experience_points: 0,
+      core_stats: stats_changeset
+    }
+  	character_changeset = Character.changeset(default_character)
+
+    render(conn, "new.html", changeset: character_changeset)
   end
 
   def create(conn, %{"character" => character_params}) do
