@@ -36,17 +36,19 @@ defmodule Charsheet.CharacterController do
   end
 
   def create(conn, %{"character" => character_params}) do
-  	stats = CoreStats.changeset(%CoreStats{}, character_params["core_stats"])
-    changeset = Character.changeset(%Character{user_id: conn.assigns.current_user.id}, character_params)
-    |> Ecto.Changeset.put_embed(:core_stats, stats.changes)
+    new_character = %Character{user_id: conn.assigns.current_user.id}
+  	stats_changeset = CoreStats.changeset(%CoreStats{}, character_params["core_stats"])
 
-    case Repo.insert(changeset) do
+    character_changeset = Character.changeset(new_character, character_params)
+    |> Ecto.Changeset.put_embed(:core_stats, stats_changeset.changes)
+
+    case Repo.insert(character_changeset) do
       {:ok, _character} ->
         conn
         |> put_flash(:info, "Character created successfully.")
         |> redirect(to: character_path(conn, :index))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: character_changeset)
     end
   end
 
