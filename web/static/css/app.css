@@ -1,1 +1,23 @@
 /* This file is for your main application css. */
+.stat-box {
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+  border-style: solid;
+  border-width: 1px;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.stat-number {
+  font-size: 22px;
+}
+
+.character-summary-left {
+  display: inline-block;
+}
+
+.character-summary-right {
+  display: inline-block;
+}

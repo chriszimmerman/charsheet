@@ -1,22 +1,79 @@
-<h1><%= @character.name %></h1>
-<h2>Level <%= @character.level %> <%= @character.race %> <%= @character.class %></h2>
+<div class="character-summary-left">
+  <h1><%= @character.name %></h1>
+  <h2>Level <%= @character.level %> <%= @character.race %> <%= @character.class %></h2>
+</div>
 
-<ul>
-  <li>Alignment: <%= @character.alignment %></li>
-  <li>Background: <%= @character.background %></li>
-</ul>
-<ul>
-  <li>Hit Points: <%= @character.hit_points %></li>
-  <li>Strength : <%= @character.core_stats.strength %></li>
-  <li>Dexterity : <%= @character.core_stats.dexterity %></li>
-  <li>Constitution: <%= @character.core_stats.constitution %></li>
-  <li>Intelligence: <%= @character.core_stats.intelligence %></li>
-  <li>Wisdom: <%= @character.core_stats.wisdom %></li>
-  <li>Charisma: <%= @character.core_stats.charisma %></li>
-</ul>
+<div class="character-summary-right">
+  <ul>
+    <li>Alignment: <%= @character.alignment %></li>
+    <li>Background: <%= @character.background %></li>
+  </ul>
+</div>
 
+<div></div>
+
+<div class="stat-box">
+  HP 
+  <br>
+  <div class="stat-number">
+    <%= @character.hit_points %>
+  </div>
+</div>
+
+<div></div>
+
+<div class="stat-box">
+  STR
+  <br>
+  <div class="stat-number">
+    <%= @character.core_stats.strength %>
+  </div>
+</div>
+
+<div class="stat-box">
+  DEX 
+  <br>
+  <div class="stat-number">
+    <%= @character.core_stats.dexterity %>
+  </div>
+</div>
+
+<div class="stat-box">
+  CON 
+  <br>
+  <div class="stat-number">
+    <%= @character.core_stats.constitution %>
+  </div>
+</div>
+
+<div class="stat-box">
+  INT
+  <br>
+  <div class="stat-number">
+    <%= @character.core_stats.intelligence %>
+  </div>
+</div>
+
+<div class="stat-box">
+  WIS
+  <br>
+  <div class="stat-number">
+    <%= @character.core_stats.wisdom %>
+  </div>
+</div>
+
+<div class="stat-box">
+  CHA
+  <br>
+  <div class="stat-number">
+    <%= @character.core_stats.charisma %>
+  </div>
+</div>
+
+<div>
 <%= if @current_user do %>
-  <%= link "Edit", to: character_path(@conn, :edit, @character) %>
+  <%= link "Edit Character", to: character_path(@conn, :edit, @character) %> | 
 <%= end %>
 
-<%= link "Back", to: character_path(@conn, :index) %>
+<%= link "Go back to sheets", to: character_path(@conn, :index) %>
+</div>
