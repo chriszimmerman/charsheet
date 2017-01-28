@@ -69,6 +69,10 @@
     <%= @character.core_stats.charisma %>
   </div>
 </div>
+<div>
+  
+</div>
+  Proficiency Bonus: <%= Calculations.proficiency_bonus(@character) %>
 
 <div>
 <%= if @current_user do %>

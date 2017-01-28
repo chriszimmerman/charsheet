@@ -52,6 +52,7 @@ defmodule Charsheet.Web do
       import Charsheet.Router.Helpers
       import Charsheet.ErrorHelpers
       import Charsheet.Gettext
+      alias Charsheet.Calculations
     end
   end
 
