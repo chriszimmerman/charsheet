@@ -4,10 +4,6 @@
 </div>
 
 <div class="character-summary-right">
-  <ul>
-    <li>Alignment: <%= @character.alignment %></li>
-    <li>Background: <%= @character.background %></li>
-  </ul>
 </div>
 
 <div></div>
@@ -72,7 +68,11 @@
 <div>
   
 </div>
-  Proficiency Bonus: <%= Calculations.proficiency_bonus(@character) %>
+<ul>
+  <li>Proficiency Bonus: <%= Calculations.proficiency_bonus(@character) %></li>
+  <li>Alignment: <%= @character.alignment %></li>
+  <li>Background: <%= @character.background %></li>
+</ul>
 
 <div>
 <%= if @current_user do %>
